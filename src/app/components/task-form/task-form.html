@@ -1,0 +1,15 @@
+<div class="card p-3 mb-3">
+  <input [(ngModel)]="task.title" class="form-control mb-2" placeholder="Task Title">
+
+  <input [(ngModel)]="task.description" class="form-control mb-2" placeholder="Description">
+
+  <select [(ngModel)]="task.category" class="form-control mb-2">
+    <option>Work</option>
+    <option>Personal</option>
+    <option>Study</option>
+  </select>
+
+  <input type="date" [(ngModel)]="task.dueDate" class="form-control mb-2">
+
+  <button class="btn btn-primary" (click)="addTask()">Add Task</button>
+</div>

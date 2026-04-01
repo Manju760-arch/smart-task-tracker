@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <div class="card p-3">
+
+    <input [(ngModel)]="searchText" class="form-control mb-2" placeholder="Search tasks">
+
+    <select [(ngModel)]="selectedCategory" class="form-control mb-2">
+      <option>All</option>
+      <option>Work</option>
+      <option>Personal</option>
+      <option>Study</option>
+    </select>
+
+    <div class="progress mb-3">
+      <div class="progress-bar" [style.width.%]="progress"></div>
+    </div>
+
+    <div *ngFor="let task of filteredTasks"
+         class="p-2 mb-2 border rounded"
+         [ngClass]="{
+           'text-decoration-line-through': task.completed,
+           'border-danger': isOverdue(task)
+         }">
+
+      <h5>{{task.title}}</h5>
+      <p>{{task.description}}</p>
+      <small>{{task.category}} | {{task.dueDate}}</small>
+
+      <div class="mt-2">
+        <button class="btn btn-success btn-sm me-2" (click)="toggleTask(task.id)">✔</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteTask(task.id)">🗑</button>
+      </div>
+    </div>
+
+  </div>
+</div>
